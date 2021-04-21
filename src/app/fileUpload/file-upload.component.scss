@@ -1,0 +1,39 @@
+.upload-container{
+   // background-color:red;
+   display:flex;
+   flex-direction:row;
+}
+
+.choose-file {
+  color: white;
+  background-color: deepskyblue;
+  display:inline-block;
+  line-height:200%;
+  text-align:center;
+  width: 150px;
+}
+
+.choose-file-name{
+    display:inline-block;
+    margin-left:10px;
+    min-width:300px;
+}
+
+.upload-message{
+    margin-top:20px;
+    color:green;
+    display:inline-block;
+}
+
+.upload {
+  margin-top: 0px;
+  margin-left:10px;
+}
+
+.file-input {
+   width: 0px;
+}
+
+.save-icon {
+  color: green
+}

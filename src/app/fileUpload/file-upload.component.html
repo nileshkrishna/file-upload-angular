@@ -1,0 +1,15 @@
+<div class="upload-container">
+  <label for="file" class="choose-file">Choose File</label>
+  <input type="file"
+         id="file"
+         (change)="handleFileInput($event.target.files)" class="file-input">
+
+  <input type="text" class="choose-file-name" [value]="fileName" disabled>
+  <button mat-con-button class="upload" (click)="saveFileInput()" [disabled]="!isFileUploadEnabled">  <mat-icon class="save-icon">upgrade</mat-icon></button>
+</div>
+<div *ngIf="showMessage" class="upload-message">
+  {{message}}
+</div>
+<!--<div class="upload">
+
+</div>-->

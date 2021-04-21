@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+
+
+html, body { height: 100%; }
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif, "Segoe UI";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+        height: auto;// or 100%?
+    width: 100%; // 150% will make the width 1.5times
+  }
+
+  * {
+      margin:0; // else it will have some margin depending on the browser
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  app-root{
+    display:block; // its important, else height not applied
+    width:100%;
+    height:100vh;
+    
+}

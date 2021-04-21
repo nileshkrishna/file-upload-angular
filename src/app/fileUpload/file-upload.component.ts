@@ -9,29 +9,38 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
-  fileToUpload: File = null;
-  fileName: string = null;
+  fileToUpload: File | null = null;
+  fileName: string | null = null;
   isFileUploadEnabled: boolean = false;
   showMessage: boolean = false;
-  message: string;
+  message: string | null = null;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  handleFileInput(files: FileList) {
+  handleFileInput(target: any) {
+    const files = target.files;
     this.fileToUpload = files.item(0);
-    this.fileName = this.fileToUpload.name;
 
-    this.isFileUploadEnabled = this.fileToUpload != null;
+    if (this.fileToUpload != null) {
+      this.fileName = this.fileToUpload?.name;
+      this.isFileUploadEnabled = true;
+    }
+    else {
+      this.isFileUploadEnabled = false;
+    }
   }
 
   saveFileInput() {
     this.isFileUploadEnabled = false;
     this.showMessage = true;
     this.message = "Uploading selected file";
-    this.postFile(this.fileToUpload).subscribe(data => {
-     this.message = "File uploaded";
-    }, error => { this.message="Error occured while uploading file"});
+
+    if (this.fileToUpload != null) {
+      this.postFile(this.fileToUpload).subscribe(data => {
+        this.message = "File uploaded";
+      }, error => { this.message = "Error occured while uploading file" });
+    }
   }
 
   //uploadFileToActivity() {
@@ -49,7 +58,7 @@ export class FileUploadComponent {
     return this.httpClient
       .post(endpoint, formData, {})
       .pipe(map(() => { return true; }));
-      
-      //.catch((e) => this.handleError(e));
+
+    //.catch((e) => this.handleError(e));
   }
 }
